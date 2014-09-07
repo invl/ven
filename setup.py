@@ -2,17 +2,17 @@ from setuptools import setup
 
 
 setup(
-    name='venv',
+    name='ven',
     version='0.3.0',
     description='Easy way to use virtualenv.',
     long_description=open('README.rst').read(),
     license='Apache License 2.0',
     url='https://github.com/invl/venv',
-    py_modules=['venv'],
-    install_requires=['Click'],
+    py_modules=['ven'],
+    install_requires=['Click', 'virtualenv'],
     entry_points="""
     [console_scripts]
-    venv = venv:main
+    ven = ven:main
     """,
     classifiers=[
         'Development Status :: 3 - Alpha',

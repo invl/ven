@@ -1,21 +1,21 @@
-venv
-====
+ven
+===
 
-.. image:: https://pypip.in/d/venv/badge.png
-        :target: https://pypi.python.org/pypi/venv/
+.. image:: https://pypip.in/d/ven/badge.png
+        :target: https://pypi.python.org/pypi/ven/
 
-.. image:: https://pypip.in/v/venv/badge.png
-        :target: https://pypi.python.org/pypi/venv/
+.. image:: https://pypip.in/v/ven/badge.png
+        :target: https://pypi.python.org/pypi/ven/
 
-.. image:: https://pypip.in/license/venv/badge.png
-        :target: https://pypi.python.org/pypi/venv/
+.. image:: https://pypip.in/license/ven/badge.png
+        :target: https://pypi.python.org/pypi/ven/
 
 Easy way to use virtualenv.
 
 
 Features
 --------
-- Store virtualenv in .venv directory, kind of like a git repo.
+- Store virtualenv in .venv directory, along with your .git and requirements.txt
 - Run command inside virtualenv without activating it.
 
 
@@ -23,29 +23,29 @@ Install
 -------
 ::
 
-    $ pip install --user venv
+    $ pip install --user ven
 
 
 Quickstart
 ----------
 
-Initialize an empty virtualenv using `venv init`::
+Initialize an empty virtualenv using `ven init`::
 
-    $ venv init
+    $ ven init
     New python executable in .venv/bin/python
     Installing setuptools, pip...done.
 
     $ ls -A
-    .venv
+    .ven
 
-Run command inside virtualenv using `venv run`::
+Run command inside virtualenv using `ven run`::
 
-    $ venv run which python
+    $ ven run which python
     ~/project/.venv/bin/python
 
 Activate virtualenv in a sub-shell::
 
-    $ venv run
+    $ ven run
     $ which python
     ~/project/.venv/bin/python
     $ (Deactivate with Ctrl-D)
@@ -55,7 +55,7 @@ Usage
 -----
 ::
 
-    Usage: venv [OPTIONS] COMMAND [ARGS]...
+    Usage: ven [OPTIONS] COMMAND [ARGS]...
 
       Easy way to use virtualenv
 
@@ -70,9 +70,9 @@ Usage
 Caveats
 -------
 
-Use '--' to separate `venv run` options and command that contains '-'::
+Use '--' to separate `ven run` options and command that contains '-'::
 
-    $ venv run -- python --version
+    $ ven run -- python --version
     Python 2.7.5
 
 `oh-my-zsh` overwrites $PATH, add the following to your .zshrc::
@@ -83,6 +83,6 @@ Use '--' to separate `venv run` options and command that contains '-'::
 
 Recommanded aliases::
 
-    alias vrun='venv run --'
-    alias vpy='venv run -- python'
-    alias vpip='venv run -- pip'
+    alias vrun='ven run --'
+    alias vpy='ven run -- python'
+    alias vpip='ven run -- pip'
