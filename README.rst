@@ -36,7 +36,7 @@ Initialize an empty virtualenv using `ven init`::
     Installing setuptools, pip...done.
 
     $ ls -A
-    .ven
+    .venv
 
 Run command inside virtualenv using `ven run`::
 
