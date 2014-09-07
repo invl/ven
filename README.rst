@@ -81,3 +81,8 @@ Use '--' to separate `venv run` options and command that contains '-'::
         export PATH="$VIRTUAL_ENV/bin:$PATH"
     fi
 
+Recommanded aliases::
+
+    alias vrun='venv run --'
+    alias vpy='venv run -- python'
+    alias vpip='venv run -- pip'
