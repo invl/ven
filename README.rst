@@ -40,3 +40,12 @@ Activate virtualenv in a sub-shell::
     $ which python
     ~/project/.venv/bin/python
     $ (Deactivate with Ctrl-D)
+
+
+Caveats
+-------
+
+Use '--' to separate `venv run` options and command that contains '-'::
+
+    $ venv run -- python --version
+    Python 2.7.5
