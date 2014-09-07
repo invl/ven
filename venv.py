@@ -40,6 +40,7 @@ class VEnv(object):
 
 
 @click.group(help='Easy way to use virtualenv')
+@click.version_option()
 def main():
     pass
 
