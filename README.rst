@@ -49,3 +49,9 @@ Use '--' to separate `venv run` options and command that contains '-'::
 
     $ venv run -- python --version
     Python 2.7.5
+
+`oh-my-zsh` overwrites $PATH, add the following to your .zshrc::
+
+    if [ -n "$VIRTUAL_ENV" ]; then
+        export PATH="$VIRTUAL_ENV/bin:$PATH"
+    fi
