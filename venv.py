@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 
 import click
 
@@ -36,7 +37,8 @@ class VEnv(object):
             [self.bin_dir, os.environ['PATH']])
         os.environ.pop('PYTHON_HOME', None)
 
-        subprocess.check_call(cmds or [os.environ[SHELL_ENV]])
+        exitcode = subprocess.call(cmds or [os.environ[SHELL_ENV]])
+        sys.exit(exitcode)
 
 
 @click.group(help='Easy way to use virtualenv')
