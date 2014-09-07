@@ -60,9 +60,11 @@ Usage
       Easy way to use virtualenv
 
     Options:
-      --help  Show this message and exit.
+      --version  Show the version and exit.
+      --help     Show this message and exit.
 
     Commands:
+      help  Show help information
       init  Create a new virtualenv
       run   Run command in virtualenv (default: shell)
 
