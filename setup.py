@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='ven',
-    version='0.3.0',
+    version='0.4.0',
     description='Easy way to use virtualenv.',
     long_description=open('README.rst').read(),
     license='Apache License 2.0',
