@@ -17,9 +17,7 @@ def find_base_dir(path):
     if os.path.exists(os.path.join(path, VENV_DIR)):
         return path
     parent, _ = os.path.split(path)
-    if parent == path:
-        return None
-    return find_base_dir(os.path.split(path)[0])
+    return None if parent == path else find_base_dir(parent)
 
 
 def main():
