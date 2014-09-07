@@ -58,7 +58,10 @@ def help(ctx, command):
 
 
 @main.command(help='Create a new virtualenv')
-@click.option('-p', '--python')
+@click.option(
+    '-p', '--python',
+    metavar='PYTHON_EXE',
+    help='The Python interpreter to use, passed to virtualenv')
 def init(python):
     extra = ['--python', python] if python else []
     subprocess.check_call(['virtualenv', VENV_DIR] + extra)
