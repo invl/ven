@@ -8,11 +8,9 @@ VENV_DIR = '.venv'
 if os.name == 'nt':
     BIN_DIR = 'Scripts'
     SHELL_ENV = 'COMSPEC'
-    PATH_DELIM = ';'
 else:
     BIN_DIR = 'bin'
     SHELL_ENV = 'SHELL'
-    PATH_DELIM = ':'
 
 
 def find_base_dir(path):
@@ -34,7 +32,7 @@ def main():
         subprocess.check_call(['virtualenv', venv_dir])
 
     os.environ['VIRTUAL_ENV'] = venv_dir
-    os.environ['PATH'] = bin_dir + PATH_DELIM + os.environ['PATH']
+    os.environ['PATH'] = os.pathsep.join([bin_dir, os.environ['PATH']])
     os.environ.pop('PYTHON_HOME', None)
 
     cmds = sys.argv[1:] or [os.environ[SHELL_ENV]]
