@@ -1,39 +1,42 @@
 venv
 ====
 
-Easy way to use virtualenv
+Easy way to use virtualenv.
+
+
+Features
+--------
+- Store virtualenv in .venv directory, kind of like a git repo.
+- Run command inside virtualenv without activating it.
+
+
+Install
+-------
+::
+
+    $ pip install --user venv
+
 
 Quickstart
 ----------
 
-Install `venv`::
+Initialize an empty virtualenv using `venv init`::
 
-    $ pip install --user venv
-
-Activate virtualenv inside `.venv` (Create if not exists)::
-
-    $ venv
-
-::
-
-    New python executable in /tmp/venv/.venv/bin/python
+    $ venv init
+    New python executable in .venv/bin/python
     Installing setuptools, pip...done.
 
-Run `pip list` inside virtualenv without activating it::
+    $ ls -A
+    .venv
 
-    $ venv pip list
+Run command inside virtualenv using `venv run`::
 
-::
+    $ venv run which python
+    ~/project/.venv/bin/python
 
-    pip (1.5.6)
-    setuptools (3.6)
-    wsgiref (0.1.2)
+Activate virtualenv in a sub-shell::
 
-`venv` can find `.venv` in ancestor directory::
-
-    $ mkdir foo && cd foo
-    $ venv pip list
-
-::
-
-    (same as previous example)
+    $ venv run
+    $ which python
+    ~/project/.venv/bin/python
+    $ (Deactivate with Ctrl-D)

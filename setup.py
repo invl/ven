@@ -9,6 +9,7 @@ setup(
     license='Apache License 2.0',
     url='https://github.com/invl/venv',
     py_modules=['venv'],
+    install_requires=['Click'],
     entry_points="""
     [console_scripts]
     venv = venv:main

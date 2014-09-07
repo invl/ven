@@ -1,6 +1,7 @@
 import os
 import subprocess
-import sys
+
+import click
 
 
 VENV_DIR = '.venv'
@@ -20,22 +21,46 @@ def find_base_dir(path):
     return None if parent == path else find_base_dir(parent)
 
 
+class VEnv(object):
+
+    def __init__(self, path):
+        self.base_dir = find_base_dir(path)
+        if not self.base_dir:
+            fatal('Not a virtualenv (or any of the parent directories): .venv')
+        self.venv_dir = os.path.join(self.base_dir, VENV_DIR)
+        self.bin_dir = os.path.join(self.venv_dir, BIN_DIR)
+
+    def run(self, cmds=None):
+        os.environ['VIRTUAL_ENV'] = self.venv_dir
+        os.environ['PATH'] = os.pathsep.join(
+            [self.bin_dir, os.environ['PATH']])
+        os.environ.pop('PYTHON_HOME', None)
+
+        subprocess.check_call(cmds or [os.environ[SHELL_ENV]])
+
+
+@click.group(help='Easy way to use virtualenv')
 def main():
-    cwd = os.getcwd()
-    base_dir = find_base_dir(cwd) or cwd
-    venv_dir = os.path.join(base_dir, VENV_DIR)
-    bin_dir = os.path.join(venv_dir, BIN_DIR)
+    pass
 
-    if not os.path.exists(venv_dir):
-        subprocess.check_call(['virtualenv', venv_dir])
 
-    os.environ['VIRTUAL_ENV'] = venv_dir
-    os.environ['PATH'] = os.pathsep.join([bin_dir, os.environ['PATH']])
-    os.environ.pop('PYTHON_HOME', None)
+@main.command(help='Create a new virtualenv')
+@click.option('-p', '--python')
+def init(python):
+    extra = ['--python', python] if python else []
+    subprocess.check_call(['virtualenv', VENV_DIR] + extra)
 
-    cmds = sys.argv[1:] or [os.environ[SHELL_ENV]]
-    subprocess.check_call(cmds)
 
+@main.command(help='Run command in virtualenv (default: shell)')
+@click.argument('command', nargs=-1, required=False)
+def run(command):
+    venv = VEnv(os.getcwd())
+    venv.run(command)
+
+
+def fatal(msg, code=1):
+    click.echo('fatal: %s' % msg, err=True)
+    raise SystemExit(code)
 
 if __name__ == '__main__':
     main()
