@@ -76,7 +76,7 @@ def run(command):
 
 def fatal(msg, code=1):
     click.echo('fatal: %s' % msg, err=True)
-    raise SystemExit(code)
+    sys.exit(code)
 
 if __name__ == '__main__':
     main()
