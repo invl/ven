@@ -1,6 +1,15 @@
 venv
 ====
 
+.. image:: https://pypip.in/d/venv/badge.png
+        :target: https://pypi.python.org/pypi/venv/
+
+.. image:: https://pypip.in/v/venv/badge.png
+        :target: https://pypi.python.org/pypi/venv/
+
+.. image:: https://pypip.in/license/venv/badge.png
+        :target: https://pypi.python.org/pypi/venv/
+
 Easy way to use virtualenv.
 
 
