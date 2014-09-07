@@ -36,9 +36,7 @@ class VEnv(object):
         os.environ['PATH'] = os.pathsep.join(
             [self.bin_dir, os.environ['PATH']])
         os.environ.pop('PYTHON_HOME', None)
-
-        exitcode = subprocess.call(cmds or [os.environ[SHELL_ENV]])
-        sys.exit(exitcode)
+        return subprocess.call(cmds or [os.environ[SHELL_ENV]])
 
 
 @click.group(help='Easy way to use virtualenv')
@@ -57,7 +55,7 @@ def init(python):
 @click.argument('command', nargs=-1, required=False)
 def run(command):
     venv = VEnv(os.getcwd())
-    venv.run(command)
+    sys.exit(venv.run(command))
 
 
 def fatal(msg, code=1):
