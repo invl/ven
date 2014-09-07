@@ -45,6 +45,18 @@ def main():
     pass
 
 
+@main.command(help='Show help information')
+@click.argument('command', required=False)
+@click.pass_context
+def help(ctx, command):
+    cmds = {
+        'help': help,
+        'init': init,
+        'run': run,
+    }
+    click.echo(cmds.get(command, main).get_help(ctx))
+
+
 @main.command(help='Create a new virtualenv')
 @click.option('-p', '--python')
 def init(python):
