@@ -51,6 +51,22 @@ Activate virtualenv in a sub-shell::
     $ (Deactivate with Ctrl-D)
 
 
+Usage
+-----
+::
+
+    Usage: venv [OPTIONS] COMMAND [ARGS]...
+
+      Easy way to use virtualenv
+
+    Options:
+      --help  Show this message and exit.
+
+    Commands:
+      init  Create a new virtualenv
+      run   Run command in virtualenv (default: shell)
+
+
 Caveats
 -------
 
@@ -64,3 +80,4 @@ Use '--' to separate `venv run` options and command that contains '-'::
     if [ -n "$VIRTUAL_ENV" ]; then
         export PATH="$VIRTUAL_ENV/bin:$PATH"
     fi
+
